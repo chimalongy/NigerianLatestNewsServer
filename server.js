@@ -6,6 +6,7 @@ import dotenv from "dotenv";
 import { NaijaNewsAction } from "./actions/NaijaNewsAction.js";
 import { GistReelAction } from "./actions/GistReelAction.js";
 
+
 dotenv.config();
 
 const app = express();
@@ -34,9 +35,10 @@ async function runScraperLoop() {
 
   // Ensure DB exists if necessary
   // await createArticlesTable();
-
+ 
   while (true) {
     try {
+   
       console.log("📰 Running NaijaNewsAction...");
       await NaijaNewsAction()
       console.log("📰 Running GistReelAction...");
@@ -44,10 +46,10 @@ async function runScraperLoop() {
       console.log("✅ Scrape cycle complete.");
     } catch (err) {
       console.error("🔥 Error in scraper loop:", err.message);
-    }
+    } 
 
     console.log("⏰ Waiting 10 minutes before next scrape cycle...");
-    await new Promise((resolve) => setTimeout(resolve, 10 * 60 * 1000)); // 10 mins
+    await new Promise((resolve) => setTimeout(resolve, 3 * 60 * 1000)); // 10 mins
   }
 }
 

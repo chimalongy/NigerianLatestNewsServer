@@ -1,12 +1,14 @@
 import dotenv from "dotenv";
 dotenv.config();
 import axios from "axios";
-import { API_KEYS } from "../lib/API_KEYS.js";
+// import { API_KEYS } from "../lib/API_KEYS.js";
+import { getAllApiKeys } from "../lib/Database/dbFunctions.js";
 
 //const MODEL = "deepseek/deepseek-chat-v3.1:free";
 const MODEL = "deepseek/deepseek-r1-0528:free";
 
 export async function GetWPConent(blogConent) {
+  let API_KEYS= await getAllApiKeys()
   const MAX_RETRIES = 4;
 
   for (let keyIndex = 0; keyIndex < API_KEYS.length; keyIndex++) {
@@ -17,7 +19,7 @@ export async function GetWPConent(blogConent) {
       try {
         console.log(
           `🚀 Attempt ${attempt}/${MAX_RETRIES} with key ${keyIndex + 1}`
-        );
+        );  
 
         const response = await axios.post(
           "https://openrouter.ai/api/v1/chat/completions",

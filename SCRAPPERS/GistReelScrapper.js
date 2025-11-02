@@ -21,9 +21,9 @@ export async function scrapeGistReelRecentPostsGrid(url) {
     // 3. Manually format today's date to match the site's format (e.g., "Oct 23, 2025")
     
     let today = new Date();
-let yesterday = new Date(today);
-yesterday.setDate(today.getDate() - 1);
-today = yesterday
+// let yesterday = new Date(today);
+// yesterday.setDate(today.getDate() - 1);
+// today = yesterday
 
  
 

@@ -1,7 +1,8 @@
 import dotenv from "dotenv";
 import axios from "axios";
-import { API_KEYS } from "../lib/API_KEYS.js";
+//import { API_KEYS } from "../lib/API_KEYS.js";
 import { constants } from "buffer";
+import { getAllApiKeys } from "../lib/Database/dbFunctions.js";
 
 dotenv.config();
 
@@ -14,6 +15,7 @@ const MODEL = "deepseek/deepseek-r1-0528:free";
  * @returns {Promise<{success: boolean, answer: string | null}>}
  */
 export async function GetGistReelWPConent(blogContent, category) {
+  let API_KEYS= await getAllApiKeys()
   console.log(blogContent)
   if (!blogContent){
     console.log("no blog content")
