@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import { GetWPConent } from "../AGENTS/GenerateWordPress.js";
+import { NaijaNewsRewrite } from "../AGENTS/NaijaNewsRewrite.js";
 import {
   scrapeRecentPosts,
   extractPostContent,
@@ -45,9 +45,10 @@ export async function NaijaNewsAction() {
         };
 
         // Generate rewritten content
-        const rewritten = await GetWPConent(JSON.stringify(agent_data));
+        const rewritten = await NaijaNewsRewrite(JSON.stringify(agent_data));
+      
         if (!rewritten?.answer) continue;
-
+       
         const parsed = safeParseYAML(rewritten.answer);
         if (!parsed) continue;
 

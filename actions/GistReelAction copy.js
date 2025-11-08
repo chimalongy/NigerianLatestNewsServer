@@ -3,9 +3,7 @@ import {
   scrapeGistReelRecentPostsList,
   extractPostContentHtml,
 } from "../SCRAPPERS/GistReelScrapper.js";
-// import { GetGistReelWPConent } from "../AGENTS/Gemini.js"
-import { GetGistReelWPConent } from "../AGENTS/GistReelRewrite.js"
-
+import { GetGistReelWPConent } from "../AGENTS/GistReelRewrite.js";
 import { POSTGISTREELTOWORDPRESS } from "../WORPRESSPOSTER/gistreelwordpressposter.js";
 import { filterNewLinks, saveArticle } from "../lib/Database/dbFunctions.js";
 import { safeParseYAML } from "../lib/globalfunctions.js";
@@ -77,8 +75,6 @@ export async function GistReelAction() {
             continue;
           }
 
-          // console.log(parsedresult)
-          // return;
           const wordpressresult = await POSTGISTREELTOWORDPRESS(parsedresult);
           if (!wordpressresult?.data) {
             console.error(`❌ Failed to upload post to WordPress for ${current_link}`);

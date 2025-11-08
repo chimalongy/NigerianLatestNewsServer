@@ -41,8 +41,8 @@ async function runScraperLoop() {
    
       console.log("📰 Running NaijaNewsAction...");
       await NaijaNewsAction()
-      console.log("📰 Running GistReelAction...");
-      await GistReelAction();
+      //console.log("📰 Running GistReelAction...");
+     // await GistReelAction();
       console.log("✅ Scrape cycle complete.");
     } catch (err) {
       console.error("🔥 Error in scraper loop:", err.message);
