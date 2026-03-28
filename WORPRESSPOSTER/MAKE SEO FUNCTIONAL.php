@@ -10,7 +10,7 @@ add_filter('rest_api_allowed_private_meta_keys', function ($protected, $meta_key
         // Yoast
         '_yoast_wpseo_focuskw',
         '_yoast_wpseo_metadesc',
-        '_yoast_wpseo_title',
+        '_yoast_wpseo_title', 
     ];
 
     if (in_array($meta_key, $seo_keys, true)) {
